@@ -555,68 +555,12 @@ abstract class Messaging {
   /// 
   /// Returns Promise<string> fulfilled with a unique message ID string after the 
   /// message has been successfully handed off to the FCM service for delivery
-  external Promise send(Message message, [bool dryRun]);
+  external Promise send(FcmMessage message, [bool dryRun]);
 
   /// Sends all the messages in the given array via Firebase Cloud Messaging.
   /// 
   /// Returns Promise<BatchResponse> fulfilled with an object representing the result of the send operation.
-  external Promise sendAll(List<Message> messages, [bool dryRun]);
-
-  /// Sends the given multicast message to all the FCM registration tokens specified in it.
-  /// 
-  /// Returns Promise<BatchResponse> fulfilled with an object representing the result of the send operation.
-  external Promise sendMulticast(MulticastMessage message, [bool dryRun]);
-
-  /// Sends an FCM message to a condition.
-  /// 
-  /// Returns Promise<MessagingConditionResponse> fulfilled with the server's response after the message has been sent.
-  external Promise sendToCondition(String condition, MessagingPayload payload, [MessagingOptions options]);
-  
-  /// Sends an FCM message to a single device corresponding to the provided registration token.
-  /// 
-  /// Returns Promise<MessagingDevicesResponse> fulfilled with the server's response after the message has been sent.
-  external Promise sendToDevice(String registrationToken, MessagingPayload payload, [MessagingOptions options]);
-
-  /// Sends an FCM message to a device group corresponding to the provided notification key.
-  /// 
-  /// Returns Promise<MessagingDevicesResponse> fulfilled with the server's response after the message has been sent.
-  external Promise sendToDeviceGroup(String notificationKey, MessagingPayload payload, [MessagingOptions options]);
-
-  /// Sends an FCM message to a topic.
-  /// 
-  /// Returns Promise<MessagingTopicResponse> fulfilled with the server's response after the message has been sent.
-  external Promise sendToTopic(String topic, MessagingPayload payload, [MessagingOptions options]);
-
-  /// Subscribes a device to an FCM topic.
-  /// 
-  /// Returns Promise<MessagingTopicManagementResponse> fulfilled with the server's response after the device has been subscribed to the topic.
-  external Promise subscribeToTopic(String registrationTokens, String topic);
-
-  /// Unsubscribes a device from an FCM topic.
-  /// 
-  /// Returns Promise<MessagingTopicManagementResponse> fulfilled with the server's response after the device has been subscribed to the topic.
-  external Promise unsubscribeFromTopic(String registrationTokens, String topic);
-}
-
-// admin.messaging ================================================================
-
-/// The Firebase Messaging service interface.
-@JS()
-@anonymous
-abstract class Messaging {
-  /// The app associated with this Messaging service instance.
-  external App get app;
-
-  /// Sends the given message via FCM.
-  /// 
-  /// Returns Promise<string> fulfilled with a unique message ID string after the 
-  /// message has been successfully handed off to the FCM service for delivery
-  external Promise send(Message message, [bool dryRun]);
-
-  /// Sends all the messages in the given array via Firebase Cloud Messaging.
-  /// 
-  /// Returns Promise<BatchResponse> fulfilled with an object representing the result of the send operation.
-  external Promise sendAll(List<Message> messages, [bool dryRun]);
+  external Promise sendAll(List<FcmMessage> messages, [bool dryRun]);
 
   /// Sends the given multicast message to all the FCM registration tokens specified in it.
   /// 
